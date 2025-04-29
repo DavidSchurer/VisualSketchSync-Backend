@@ -7,9 +7,9 @@ const app = express();
 
 // Enable CORS for all routes
 const corsOptions = {
-  origin: '*', // Allow all domains
+  origin: 'https://visual-sketch-sync.vercel.app', // Specify the exact origin
   methods: ["GET", "POST"],
-  credentials: true
+  credentials: true // Allow credentials
 };
 
 app.use(cors(corsOptions));
@@ -21,9 +21,9 @@ const PORT = process.env.PORT || 10000;
 
 const io = new Server(server, {
   cors: {
-    origin: '*', // Allow all domains for Socket.io
+    origin: 'https://visual-sketch-sync.vercel.app', // Specify the exact origin
     methods: ["GET", "POST"],
-    credentials: true
+    credentials: true // Allow credentials
   }
 });
 
