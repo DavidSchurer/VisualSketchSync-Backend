@@ -11,8 +11,8 @@ app.use(cors());
 const server = http.createServer(app);
 
 // Use environment variables with fallbacks
-const PORT = process.env.PORT || 4000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
+const PORT = process.env.PORT || 10000;
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "https://visual-sketch-sync.vercel.app";
 
 const io = new Server(server, {
   cors: {
