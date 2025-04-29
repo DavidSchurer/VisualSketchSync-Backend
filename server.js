@@ -6,17 +6,22 @@ const cors = require('cors');
 const app = express();
 
 // Enable CORS for all routes
-app.use(cors());
+const corsOptions = {
+  origin: '*', // Allow all domains
+  methods: ["GET", "POST"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 
 // Use environment variables with fallbacks
 const PORT = process.env.PORT || 10000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "https://visual-sketch-sync.vercel.app";
 
 const io = new Server(server, {
   cors: {
-    origin: CORS_ORIGIN === "*" ? true : CORS_ORIGIN.split(","),
+    origin: '*', // Allow all domains for Socket.io
     methods: ["GET", "POST"],
     credentials: true
   }
