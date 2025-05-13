@@ -110,6 +110,11 @@ io.on('connection', (socket) => {
     socket.to(whiteboardId).emit('addTextBox', textBox);
   });
 
+  socket.on('addShape', (shape) => {
+    const whiteboardId = shape.whiteboardId || 'global';
+    socket.to(whiteboardId).emit('addShape', shape);
+  });
+
   socket.on('disconnect', () => {
     // Find which whiteboard this socket belonged to
     let userWhiteboardId = null;
